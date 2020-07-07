@@ -20,6 +20,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
 }
 
@@ -30,4 +34,16 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.github.iandroid-sdk:lib-utils:0.0.3'
+
+    //fresco
+    // 支持 GIF 动图，需要添加
+    api 'com.facebook.fresco:fresco:2.1.0'
+    api 'com.facebook.fresco:animated-gif:2.1.0'
+    api 'com.facebook.fresco:animated-base:2.1.0'
+    api "com.facebook.fresco:imagepipeline-okhttp3:2.1.0"
+    // face detection center crop with Fresco
+    api 'com.github.aryarohit07:fresco-facedetection-processor:0.1.1'
+
 }
