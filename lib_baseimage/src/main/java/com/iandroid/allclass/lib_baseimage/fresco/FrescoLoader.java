@@ -127,7 +127,7 @@ public class FrescoLoader extends IImageLoader {
         Supplier<File> baseDirectoryPathSupplier = () -> {
             File cache = null;
             try {
-                if (frescoConfig != null && TextUtils.isEmpty(frescoConfig.getLocalDir()))
+                if (frescoConfig != null && !TextUtils.isEmpty(frescoConfig.getLocalDir()))
                     cache = new File(frescoConfig.getLocalDir());
             } catch (Exception e) {
                 Log.e(TAG, e.toString());
