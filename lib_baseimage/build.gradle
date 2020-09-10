@@ -35,8 +35,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.github.iandroid-sdk:lib-utils:0.0.3'
-
     //fresco
     // 支持 GIF 动图，需要添加
     api 'com.facebook.fresco:fresco:2.1.0'

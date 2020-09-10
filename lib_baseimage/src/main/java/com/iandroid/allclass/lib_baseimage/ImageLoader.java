@@ -18,9 +18,9 @@ import com.facebook.imagepipeline.core.ImagePipeline;
 import com.facebook.imagepipeline.core.ImagePipelineFactory;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
+import com.iandroid.allclass.lib_baseimage.Utils.DeviceUtil;
 import com.iandroid.allclass.lib_baseimage.fresco.FrescoImageDownCallBack;
 import com.iandroid.allclass.lib_baseimage.fresco.FrescoRequestListener;
-import com.iandroid.allclass.lib_commonutils.DeviceUtil;
 
 import java.io.File;
 

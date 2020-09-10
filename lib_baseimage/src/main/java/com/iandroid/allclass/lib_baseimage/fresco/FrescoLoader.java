@@ -37,7 +37,7 @@ import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.iandroid.allclass.lib_baseimage.FrescoConfig;
 import com.iandroid.allclass.lib_baseimage.IImageLoader;
 import com.iandroid.allclass.lib_baseimage.ImageOptions;
-import com.iandroid.allclass.lib_commonutils.DeviceUtil;
+import com.iandroid.allclass.lib_baseimage.Utils.DeviceUtil;
 import com.rohitarya.fresco.facedetection.processor.core.FrescoFaceDetector;
 
 import java.io.File;
