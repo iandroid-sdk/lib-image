@@ -382,7 +382,8 @@ public class FrescoLoader extends IImageLoader {
             return;
         if (view instanceof SimpleDraweeView) {
             Uri uri = new Uri.Builder().scheme("res")
-                    .path(String.valueOf(resID))
+                    .authority(view.getContext().getPackageName())
+                    .appendPath(String.valueOf(resID))
                     .build();
             displayImage((SimpleDraweeView) view, uri, null, imageOptions);
         } else if (view instanceof ImageView) {
