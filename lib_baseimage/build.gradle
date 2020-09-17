@@ -41,6 +41,20 @@ dependencies {
     api 'com.facebook.fresco:animated-gif:2.1.0'
     api 'com.facebook.fresco:animated-base:2.1.0'
     api "com.facebook.fresco:imagepipeline-okhttp3:2.1.0"
+
+    // 在 API < 14 上的机器支持 WebP 时，需要添加
+    api 'com.facebook.fresco:animated-base-support:0.12.0'
+
+    // 支持 GIF 动图，需要添加
+    api 'com.facebook.fresco:animated-gif:0.12.0'
+
+    // 支持 WebP （静态图+动图），需要添加
+    api 'com.facebook.fresco:animated-webp:0.12.0'
+    api 'com.facebook.fresco:webpsupport:0.12.0'
+
+    // 仅支持 WebP 静态图，需要添加
+    api 'com.facebook.fresco:webpsupport:0.12.0'
+
     // face detection center crop with Fresco
     api 'com.github.aryarohit07:fresco-facedetection-processor:0.1.1'
 
