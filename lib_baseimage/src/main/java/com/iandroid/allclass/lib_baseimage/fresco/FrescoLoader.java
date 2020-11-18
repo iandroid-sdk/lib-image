@@ -301,6 +301,8 @@ public class FrescoLoader extends IImageLoader {
                     imageOptions.setScaleheight(DeviceUtil.dip2px(imageView.getContext(), 100));
 
                 imageRequestBuilder = ImageRequestBuilder.newBuilderWithSource(uri);
+
+
                 if (imageOptions.getBlur_iterations() > 0) {
                     imageRequestBuilder.setPostprocessor(new IterativeBoxBlurPostProcessor(imageOptions.getBlur_iterations(), radius));
                 } else {
@@ -315,6 +317,9 @@ public class FrescoLoader extends IImageLoader {
                     imageRequestBuilder = ImageRequestBuilder.newBuilderWithSource(uri);
                 imageRequestBuilder.setResizeOptions(resizeOptions);
             }
+
+            if (imageOptions.getBasePostprocessor() != null)
+                imageRequestBuilder.setPostprocessor(imageOptions.getBasePostprocessor());
 
             //拿到tag
             tag = imageOptions.getTag();

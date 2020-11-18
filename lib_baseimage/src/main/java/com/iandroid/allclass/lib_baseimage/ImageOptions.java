@@ -3,6 +3,7 @@ package com.iandroid.allclass.lib_baseimage;
 
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.imagepipeline.common.ResizeOptions;
+import com.facebook.imagepipeline.request.BasePostprocessor;
 import com.iandroid.allclass.lib_baseimage.fresco.FrescoControllerListener;
 
 import androidx.annotation.ColorInt;
@@ -25,13 +26,15 @@ public class ImageOptions {
     private boolean auto_play = true;
     private boolean asCircle = false;
     private boolean progressiveRenderingEnabled = false;
+    private BasePostprocessor basePostprocessor;
 
     private FrescoControllerListener ctlListener;
     private ScalingUtils.ScaleType actualScaleType;
     //边框
     private @ColorRes
     int overlayColor = 0;
-    private @ColorRes int border_color = 0;
+    private @ColorRes
+    int border_color = 0;
     private float border_size = 0.0f;
 
     //圆角
@@ -53,6 +56,10 @@ public class ImageOptions {
 
     public void setCtlListener(FrescoControllerListener ctlListener) {
         this.ctlListener = ctlListener;
+    }
+
+    public BasePostprocessor getBasePostprocessor() {
+        return basePostprocessor;
     }
 
     public ScalingUtils.ScaleType getActualScaleType() {
@@ -176,6 +183,7 @@ public class ImageOptions {
     }
 
     private ImageOptions(Builder builder) {
+        this.basePostprocessor = builder.basePostprocessor;
         this.overlayColor = builder.overlayColor;
         this.scaleheight = builder.scaleheight;
         this.scalewidth = builder.scalewidth;
@@ -233,8 +241,10 @@ public class ImageOptions {
         private boolean progressiveRenderingEnabled = false;
 
         //边框
-        private @ColorRes int overlayColor = 0;
-        private @ColorRes int border_color = 0;
+        private @ColorRes
+        int overlayColor = 0;
+        private @ColorRes
+        int border_color = 0;
         private float border_size = 0.0f;
 
         //圆角
@@ -243,35 +253,44 @@ public class ImageOptions {
         private float right_top_corner_radius = 0.0f;
         private float right_bottom_corner_radius = 0.0f;
 
+        private BasePostprocessor basePostprocessor;
+
         //展位图
-        private @DrawableRes int placeholderImage = 0;
+        private @DrawableRes
+        int placeholderImage = 0;
         private ScalingUtils.ScaleType placeholderScaleType = ScalingUtils.ScaleType.FIT_XY;
 
         //异常图
-        private @DrawableRes int failureImage = 0;
+        private @DrawableRes
+        int failureImage = 0;
         private ScalingUtils.ScaleType failureScaleType = ScalingUtils.ScaleType.FIT_XY;
 
-        public Builder aspectRatio(float aspectRatio){
+        public Builder aspectRatio(float aspectRatio) {
             this.aspectRatio = aspectRatio;
             return this;
         }
 
-        public Builder width(int width){
+        public Builder width(int width) {
             this.width = width;
             return this;
         }
 
-        public Builder height( int height){
+        public Builder height(int height) {
             this.height = height;
             return this;
         }
 
-        public Builder failureImage(@DrawableRes int failureImage){
+        public Builder basePostprocessor(BasePostprocessor basePostprocessor) {
+            this.basePostprocessor = basePostprocessor;
+            return this;
+        }
+
+        public Builder failureImage(@DrawableRes int failureImage) {
             this.failureImage = failureImage;
             return this;
         }
 
-        public Builder failureImage(@DrawableRes int failureImage, ScalingUtils.ScaleType failureScaleType){
+        public Builder failureImage(@DrawableRes int failureImage, ScalingUtils.ScaleType failureScaleType) {
             this.failureImage = failureImage;
             this.failureScaleType = failureScaleType;
             return this;
