@@ -50,6 +50,8 @@ public class ImageOptions {
     private @DrawableRes int failureImage = 0;
     private ScalingUtils.ScaleType failureScaleType = ScalingUtils.ScaleType.FIT_XY;
 
+    private boolean isNeedBlackWhite = false;
+
     public boolean isProgressiveRenderingEnabled() {
         return progressiveRenderingEnabled;
     }
@@ -60,6 +62,10 @@ public class ImageOptions {
 
     public BasePostprocessor getBasePostprocessor() {
         return basePostprocessor;
+    }
+
+    public void setBasePostprocessor(BasePostprocessor basePostprocessor) {
+        this.basePostprocessor = basePostprocessor;
     }
 
     public ScalingUtils.ScaleType getActualScaleType() {
@@ -178,11 +184,16 @@ public class ImageOptions {
         return aspectRatio;
     }
 
+    public boolean isNeedBlackWhite() {
+        return isNeedBlackWhite;
+    }
+
     public FrescoControllerListener getCtlListener() {
         return ctlListener;
     }
 
     private ImageOptions(Builder builder) {
+        this.isNeedBlackWhite = builder.isNeedBlackWhite;
         this.basePostprocessor = builder.basePostprocessor;
         this.overlayColor = builder.overlayColor;
         this.scaleheight = builder.scaleheight;
@@ -239,6 +250,7 @@ public class ImageOptions {
         private boolean asCircle = false;
         //渐进式
         private boolean progressiveRenderingEnabled = false;
+        private boolean isNeedBlackWhite = false;
 
         //边框
         private @ColorRes
@@ -267,6 +279,11 @@ public class ImageOptions {
 
         public Builder aspectRatio(float aspectRatio) {
             this.aspectRatio = aspectRatio;
+            return this;
+        }
+
+        public Builder isNeedBlackWhite(boolean isNeedBlackWhite) {
+            this.isNeedBlackWhite = isNeedBlackWhite;
             return this;
         }
 

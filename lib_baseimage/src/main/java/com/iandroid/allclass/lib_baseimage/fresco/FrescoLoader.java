@@ -318,8 +318,16 @@ public class FrescoLoader extends IImageLoader {
                 imageRequestBuilder.setResizeOptions(resizeOptions);
             }
 
-            if (imageOptions.getBasePostprocessor() != null)
+            if (imageOptions != null && imageOptions.isNeedBlackWhite()) {
+                imageOptions.setBasePostprocessor(new RedMeshPostprocessor());
+            }
+
+            if (imageOptions != null && imageOptions.getBasePostprocessor() != null) {
+                if (imageRequestBuilder == null)
+                    imageRequestBuilder = ImageRequestBuilder.newBuilderWithSource(uri);
+
                 imageRequestBuilder.setPostprocessor(imageOptions.getBasePostprocessor());
+            }
 
             //拿到tag
             tag = imageOptions.getTag();
@@ -342,6 +350,7 @@ public class FrescoLoader extends IImageLoader {
         }
 
         if (imageRequestBuilder != null) {
+
             Log.d(TAG, "setImageRequest:" + uri.toString());
             pipelineDraweeControllerBuilder.setImageRequest(imageRequestBuilder
                     .setProgressiveRenderingEnabled(progressiveRenderingEnabled)
