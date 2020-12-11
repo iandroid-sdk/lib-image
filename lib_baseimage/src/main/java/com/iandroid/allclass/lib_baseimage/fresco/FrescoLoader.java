@@ -221,8 +221,9 @@ public class FrescoLoader extends IImageLoader {
                     imageView.setLayoutParams(layoutParams);
                 }
             }
-            if (layoutParams.width == ViewGroup.LayoutParams.WRAP_CONTENT
-                    || layoutParams.height == ViewGroup.LayoutParams.WRAP_CONTENT) {
+            if ((layoutParams.width == ViewGroup.LayoutParams.WRAP_CONTENT
+                    || layoutParams.height == ViewGroup.LayoutParams.WRAP_CONTENT)
+                    && imageView.getAspectRatio() <= 0) {
                 if (imageOptions == null)
                     imageOptions = new ImageOptions.Builder().build();
                 if (imageOptions.getCtlListener() == null)
