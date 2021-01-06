@@ -23,6 +23,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.generic.RoundingParams;
+import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
 import com.facebook.imagepipeline.common.ResizeOptions;
@@ -38,6 +39,8 @@ import com.iandroid.allclass.lib_baseimage.FrescoConfig;
 import com.iandroid.allclass.lib_baseimage.IImageLoader;
 import com.iandroid.allclass.lib_baseimage.ImageOptions;
 import com.iandroid.allclass.lib_baseimage.Utils.DeviceUtil;
+import com.iandroid.allclass.lib_baseimage.fresco.zoomable.DoubleTapGestureListener;
+import com.iandroid.allclass.lib_baseimage.fresco.zoomable.ZoomableDraweeView;
 import com.rohitarya.fresco.facedetection.processor.core.FrescoFaceDetector;
 
 import java.io.File;
@@ -404,6 +407,29 @@ public class FrescoLoader extends IImageLoader {
         } else if (view instanceof ImageView) {
             ((ImageView) view).setImageResource(resID);
         }
+    }
+
+    @Override
+    public void displayZoomableImage(View view, String url) {
+        if (!(view instanceof ZoomableDraweeView)) {
+            return;
+        }
+        ZoomableDraweeView zoomableDraweeView = (ZoomableDraweeView) view;
+        zoomableDraweeView.setTapListener(new DoubleTapGestureListener(zoomableDraweeView));
+
+        String imageUrl = url;
+        if (!TextUtils.isEmpty(url)
+                && !url.toLowerCase().startsWith("http")) {
+            imageUrl = "file://" + url;
+        }
+        Uri imageUri = Uri.parse(TextUtils.isEmpty(imageUrl) ? "" : imageUrl);
+
+        DraweeController controller =
+                Fresco.newDraweeControllerBuilder()
+                        .setUri(imageUri)
+                        .setOldController(zoomableDraweeView.getController())
+                        .build();
+        zoomableDraweeView.setController(controller);
     }
 
     @Override

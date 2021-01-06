@@ -24,6 +24,9 @@ public class IImageLoader {
     public void displayImage(View view, int resID, ImageOptions imageOptions) {
     }
 
+    public void displayZoomableImage(View view, String url){
+    }
+
     public void clearMemoryCacheByUrl(String url) {
         if (!TextUtils.isEmpty(url))
             clearMemoryCacheByUri(Uri.parse(url));

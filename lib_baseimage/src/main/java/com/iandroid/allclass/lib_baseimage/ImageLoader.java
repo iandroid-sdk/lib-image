@@ -146,6 +146,10 @@ public class ImageLoader extends ImageLoaderBase {
         }
     }
 
+    //加載手势缩放圖片
+    public static void displayZoomableImage(View view, String url) {
+        getInstance().get(ImageLoaderType.image_lib_fresco).displayZoomableImage(view, url);
+    }
 
     /**
      * 支持仅加载图片不渲染至ImageView的后处理（类似图片加载完成后需要后处理在渲染至ImageView）
