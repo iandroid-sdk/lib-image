@@ -63,8 +63,15 @@ public class FrescoControllerListener implements ControllerListener {
                     layoutParams.height = imageInfo.getHeight();
                 }
 
+                if (layoutParams.width == ViewGroup.LayoutParams.WRAP_CONTENT
+                        && layoutParams.height > 0
+                        && aspectRatio == 0.0f
+                        && imageInfo.getHeight() > 0) {
+                    layoutParams.width = (imageInfo.getWidth() * layoutParams.height) / imageInfo.getHeight();
+                }
+
                 imageView.setLayoutParams(layoutParams);
-                if ( imageView instanceof SimpleDraweeView
+                if (imageView instanceof SimpleDraweeView
                         && imageInfo.getHeight() > 0
                         && imageInfo.getWidth() > 0
                         && aspectRatio < 0)
