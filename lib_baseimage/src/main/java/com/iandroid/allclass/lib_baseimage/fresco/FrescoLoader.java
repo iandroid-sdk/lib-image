@@ -62,9 +62,6 @@ public class FrescoLoader extends IImageLoader {
 
     private HashMap<String, Set<String>> loadinglist;
 
-    private static final float MAX_IMAGE_RATIO = 3f;
-    private static final float MIN_IMAGE_RATIO = 0.2f;
-
     @Override
     public void init(Context context, FrescoConfig frescoConfig) {
         Log.d(TAG, "-----init start-----");
@@ -428,6 +425,7 @@ public class FrescoLoader extends IImageLoader {
                 Fresco.newDraweeControllerBuilder()
                         .setUri(imageUri)
                         .setOldController(zoomableDraweeView.getController())
+                        .setAutoPlayAnimations(true)
                         .build();
         zoomableDraweeView.setController(controller);
     }
